@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/whitespaca/exceldb-go"
+	"github.com/whitespaca/exceldb"
 )
 
 func main() {
