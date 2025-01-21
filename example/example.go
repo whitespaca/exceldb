@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
+
+	"github.com/whitespaca/exceldb-go"
 )
 
 func main() {
@@ -11,26 +13,26 @@ func main() {
 		log.Fatalf("Failed to initialize Excel database: %v", err)
 	}
 
-	err = db.Insert(exceldb.Row{"ID": "1", "Name": "Alice", "Age": "25"})
+	err = db.Insert(db.Row{"ID": "1", "Name": "Alice", "Age": "25"})
 	if err != nil {
 		log.Fatalf("Failed to insert data: %v", err)
 	}
 	fmt.Println("Inserted data successfully!")
 
-	results, err := db.Select(exceldb.Row{"Name": "Alice"})
+	results, err := db.Select(db.Row{"Name": "Alice"})
 	if err != nil {
 		log.Printf("No matching rows found: %v", err)
 	} else {
 		fmt.Printf("Found data: %+v\n", results)
 	}
 
-	err = db.Update(exceldb.Row{"Name": "Alice"}, exceldb.Row{"Age": "26"})
+	err = db.Update(db.Row{"Name": "Alice"}, db.Row{"Age": "26"})
 	if err != nil {
 		log.Fatalf("Failed to update data: %v", err)
 	}
 	fmt.Println("Updated data successfully!")
 
-	err = db.Delete(exceldb.Row{"ID": "1"})
+	err = db.Delete(db.Row{"ID": "1"})
 	if err != nil {
 		log.Fatalf("Failed to delete data: %v", err)
 	}
